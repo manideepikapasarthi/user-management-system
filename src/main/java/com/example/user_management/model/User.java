@@ -1,9 +1,9 @@
 package com.example.user_management.model;
 
 import jakarta.persistence.*;
-        import lombok.*;
+import lombok.*;
 
-        import java.time.LocalDateTime;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -26,4 +26,9 @@ public class User {
     private String name;
 
     private LocalDateTime createdAt;
+
+    @PrePersist
+    public void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
 }
